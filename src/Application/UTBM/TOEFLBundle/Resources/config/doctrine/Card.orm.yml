@@ -1,0 +1,45 @@
+Application\UTBM\TOEFLBundle\Entity\Card:
+    type: entity
+    table: toefl_card
+    repositoryClass: Application\UTBM\TOEFLBundle\Repository\CardRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: 255
+        content:
+            type: text
+
+
+    manyToMany:
+        tags:
+            targetEntity: Application\Sonata\ClassificationBundle\Entity\Tag
+            joinTable:
+                name: toefl_cards_tags
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+
+    manyToOne:
+        category:
+            targetEntity: Application\Sonata\ClassificationBundle\Entity\Category
+            joinColumn:
+                name: category_id
+                referencedColumnName: id
+
+    oneToOne:
+        media:
+            targetEntity: Application\Sonata\MediaBundle\Entity\Media
+            joinColumn:
+                name: media_id
+                referencedColumnName: id
+            cascade: [ "persist" ]
+
+    lifecycleCallbacks: {  }

@@ -1,0 +1,24 @@
+Application\UTBM\TOEFLBundle\Entity\Answer:
+    type: entity
+    table: toefl_answer
+    repositoryClass: Application\UTBM\TOEFLBundle\Repository\AnswerRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: 255
+        isTrue:
+            type: boolean
+            column: is_true
+    manyToOne:
+        question:
+            targetEntity: Question
+            inversedBy: answers
+            joinColumn:
+                name: question_id
+                referencedColumnName: id
+    lifecycleCallbacks: {  }

@@ -1,0 +1,13 @@
+parameters:
+#    application_utbmapi.example.class: Application\UTBM\APIBundle\Example
+
+services:
+    application_utbmapi.serializer.media_handler:
+        class: Application\UTBM\APIBundle\Serializer\MediaHandler
+        arguments:
+            - @doctrine.orm.entity_manager
+            - @router
+            - @sonata.media.pool
+            - [ sonata.media.provider.image ]
+        tags:
+            - { name: jms_serializer.subscribing_handler }

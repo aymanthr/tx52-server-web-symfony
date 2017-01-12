@@ -1,0 +1,38 @@
+Application\UTBM\TOEFLBundle\Entity\Question:
+    type: entity
+    table: toefl_question
+    repositoryClass: Application\UTBM\TOEFLBundle\Repository\QuestionRepository
+    fields:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+        title:
+            type: string
+            length: 255
+        hint:
+            type: text
+            nullable: true
+        response:
+            type: text
+            nullable: true
+    oneToMany:
+        answers:
+            targetEntity: Answer
+            mappedBy: question
+            cascade: [ "persist" ]
+
+
+    manyToMany:
+        tags:
+            targetEntity: Application\Sonata\ClassificationBundle\Entity\Tag
+            joinTable:
+                name: toefl_questions_tags
+                joinColumns:
+                    user_id:
+                        referencedColumnName: id
+                inverseJoinColumns:
+                    group_id:
+                        referencedColumnName: id
+    lifecycleCallbacks: {  }

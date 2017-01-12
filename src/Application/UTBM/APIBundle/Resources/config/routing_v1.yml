@@ -1,0 +1,19 @@
+application_utbmapi_quiz_questions_list:
+    path:     /quiz/questions
+    defaults: { _controller: ApplicationUTBMAPIBundle:Quiz:listQuestions, _format:json  }
+    methods: [GET]
+
+application_utbmapi_quiz_tags_list:
+    path:     /quiz/tags
+    defaults: { _controller: ApplicationUTBMAPIBundle:Quiz:listTags, _format:json }
+    methods: [GET]
+
+application_utbmapi_learning_categories_list:
+    path:     /learning/categories
+    defaults: { _controller: ApplicationUTBMAPIBundle:Learning:listCategories, _format:json }
+    methods: [GET]
+
+application_utbmapi_learning_cards_list:
+    path:     /learning/cards/category/{category}
+    defaults: { _controller: ApplicationUTBMAPIBundle:Learning:listCards, _format:json }
+    methods: [GET]

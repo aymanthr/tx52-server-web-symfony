@@ -1,0 +1,26 @@
+parameters:
+#    application_utbmtoefl.example.class: Application\UTBM\TOEFLBundle\Example
+
+services:
+#    application_utbmtoefl.example:
+#        class: %application_utbmtoefl.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    toefl.admin.question:
+          class: Application\UTBM\TOEFLBundle\Admin\QuestionAdmin
+          tags:
+            - { name: sonata.admin, manager_type: orm, group: Toefl, label: Questions }
+          arguments: [null, Application\UTBM\TOEFLBundle\Entity\Question, ~]
+
+    toefl.admin.answer:
+          class: Application\UTBM\TOEFLBundle\Admin\AnswerAdmin
+          tags:
+            - { name: sonata.admin, manager_type: orm, show_in_dashboard: false }
+          arguments: [null, Application\UTBM\TOEFLBundle\Entity\Answer, ~]
+
+
+    toefl.admin.card:
+          class: Application\UTBM\TOEFLBundle\Admin\CardAdmin
+          tags:
+            - { name: sonata.admin, manager_type: orm, group: Toefl, label: Cours }
+          arguments: [null, Application\UTBM\TOEFLBundle\Entity\Card, ~]
